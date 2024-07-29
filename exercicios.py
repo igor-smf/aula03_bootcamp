@@ -18,6 +18,14 @@ import string
 # como `log = {'timestamp': '2021-06-23 10:00:00', 'level': 'ERROR', 'message': 'Falha na conexão'}`, 
 # escreva um programa que imprima a mensagem se a severidade for 'ERROR'.
 
+logs = [{'timestamp': '2021-06-23 10:00:00', 'level': 'ERROR', 'message': 'Falha na conexão'}, 
+       {'timestamp': '2021-07-28 10:00:00', 'level': 'SUCESS', 'message': 'Usuário autenticado'},
+       {'timestamp': '2021-07-28 10:00:00', 'level': 'ERROR', 'message': 'Senha inválida'}]
+
+for log in logs:
+    if log['level'] == 'ERROR':
+        print(log)
+
 ### Exercício 4: Validação de Dados de Entrada
 # Antes de processar os dados de usuários em um sistema de recomendação, 
 # você precisa garantir que cada usuário tenha idade entre 18 e 65 anos e tenha 
@@ -71,12 +79,38 @@ print(contagem_de_palavras)
 ### Exercício 8. Filtragem de Dados Faltantes
 # Objetivo:** Dada uma lista de dicionários representando dados de usuários, filtrar aqueles que têm um campo específico faltando
 
+usuarios = [
+    {"nome": "Alice", "email": "alice@example.com"},
+    {"nome": "Bob", "email": ""},
+    {"nome": "Carol", "email": "carol@example.com"}
+]
+
+usuarios_com_dados_faltantes = [usuario for usuario in usuarios if usuario["email"] == '']
+
+print('\n', usuarios_com_dados_faltantes)
+
 ### Exercício 9. Extração de Subconjuntos de Dados
 # Objetivo:** Dada uma lista de números, extrair apenas aqueles que são pares.
 
 ### Exercício 10. Agregação de Dados por Categoria
 # Objetivo:** Dado um conjunto de registros de vendas, calcular o total de vendas por categoria.
+total_vendas_por_categoria = {}
 
+vendas = [
+    {"categoria": "eletrônicos", "valor": 1200},
+    {"categoria": "livros", "valor": 200},
+    {"categoria": "eletrônicos", "valor": 800}
+]
+
+for venda in vendas:
+    categoria = venda["categoria"]
+    valor = venda["valor"]
+    if categoria in total_vendas_por_categoria:
+        total_vendas_por_categoria[categoria] += valor
+    else:
+        total_vendas_por_categoria[categoria] = valor
+
+print("\n", total_vendas_por_categoria)
 ### Exercícios com WHILE
 
 ### Exercício 11. Leitura de Dados até Flag
